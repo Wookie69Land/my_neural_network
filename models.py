@@ -1,5 +1,7 @@
 from typing import List
 
+import numpy as np
+
 class Neuron:
     
     def __init__(self, weights: List[float], bias: float) -> None:
@@ -15,7 +17,8 @@ class Neuron:
         return thought
     
     def produce(self, inputs):
-        product = sum(self.think(inputs))
+        # product = sum(self.think(inputs))
+        product = np.dot(self.weights, inputs) + self.bias
         return product
 
 class Layer:
@@ -28,6 +31,9 @@ class Layer:
         return thought
     
     def produce(self, inputs: List[float]) -> List[float]:
-        product = [self.neurons[i].produce(inputs) for i in range(len(self.neurons))]
+        # product = [self.neurons[i].produce(inputs) for i in range(len(self.neurons))]
+        weights = [n.weights for n in self.neurons]
+        biases = [n.bias for n in self.neurons]
+        product = np.dot(weights, inputs) + biases
         return product
     

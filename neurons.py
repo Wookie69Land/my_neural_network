@@ -10,5 +10,4 @@ neuron3 = Neuron(weights = [2.4, 2.7, 3.9, 4.1, 0.9], bias = 3.5)
 
 if __name__ == '__main__':
     layer = Layer([neuron1, neuron2, neuron3])
-    print(layer.think(inputs))
     print(layer.produce(inputs))
