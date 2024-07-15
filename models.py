@@ -18,6 +18,7 @@ class Neuron:
     
     def produce(self, inputs):
         # product = sum(self.think(inputs))
+        inputs = np.array(inputs)
         product = np.dot(self.weights, inputs) + self.bias
         return product
 
@@ -34,6 +35,7 @@ class Layer:
         # product = [self.neurons[i].produce(inputs) for i in range(len(self.neurons))]
         weights = [n.weights for n in self.neurons]
         biases = [n.bias for n in self.neurons]
-        product = np.dot(weights, inputs) + biases
+        inputs = np.array(inputs)
+        product = np.dot(inputs, np.array(weights).T) + biases
         return product
     
