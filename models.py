@@ -2,6 +2,10 @@ from typing import List
 
 import numpy as np
 
+
+np.random.seed(0)
+
+
 class Neuron:
     
     def __init__(self, weights: List[float], bias: float) -> None:
@@ -38,4 +42,18 @@ class Layer:
         inputs = np.array(inputs)
         product = np.dot(inputs, np.array(weights).T) + biases
         return product
+
+    
+class Layer2:
+    
+    def __init__(self, inputs: List[float], n_neurons: int) -> None:
+        self.weights = 0.1*np.random.randn(len(inputs[0]), n_neurons)
+        self.biases = np.zeros((1, n_neurons))
+        self.inputs = inputs
+    
+    def produce(self):
+        product = np.dot(self.inputs, self.weights) + self.biases
+        return product
+        
+        
     
