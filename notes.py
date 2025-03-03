@@ -1,3 +1,5 @@
+# s
+
 from typing import List
 
 import numpy as np
@@ -55,5 +57,15 @@ class Layer2:
         product = np.dot(self.inputs, self.weights) + self.biases
         return product
         
+        
+class ActivationMethod:
+    
+    def __init__(self, type, a_method) -> None:
+        self.type = type
+        self.a_method = a_method
+        
+    def activate(self, inputs):
+        output = self.a_method(inputs)
+        return output
         
     
